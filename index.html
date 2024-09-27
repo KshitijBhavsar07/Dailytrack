@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dailytrack - Daily Routine Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-left">
+                <h1>Dailytrack</h1>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li><a href="#" onclick="navigate('home')">Home</a></li>
+                    <li><a href="#" onclick="navigate('services')">Services</a></li>
+                    <li><a href="#" onclick="navigate('contact')">Contact Us</a></li>
+                    <li><a href="#" onclick="navigate('help')">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login/Signup Page -->
+    <div id="loginPage" class="container active">
+        <h2>Login to Dailytrack</h2>
+        <form id="loginForm">
+            <label for="emailOrPhone">Email or Mobile Number:</label>
+            <input type="text" id="emailOrPhone" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+
+            <p>Forgot your password? <a href="#">Click here</a></p>
+            <p>Don't have an account? <a href="#" onclick="showSignUp()">Create Account</a></p>
+        </form>
+    </div>
+
+    <!-- Profile Creation Page -->
+    <div id="profilePage" class="container hidden">
+        <h2>Create Your Profile</h2>
+        <form id="profileForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <button type="button" onclick="submitProfile()">Submit</button>
+        </form>
+        <button class="back-button" onclick="goBack('loginPage')">Back</button>
+    </div>
+
+    <!-- Main Dashboard Page -->
+    <div id="mainPage" class="container hidden">
+        <div id="welcomeBox">
+            <p id="welcomeMessage"></p>
+        </div>
+        
+        <!-- Progress Tracking -->
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <canvas id="progressChart"></canvas>
+        </div>
+
+        <!-- Routine Plan -->
+        <div class="routine-section">
+            <h3>Your Daily Routine</h3>
+            <ul id="routineList">
+                <!-- Dynamic Routine Items -->
+            </ul>
+            <button onclick="addRoutine()">Add Task</button>
+        </div>
+
+        <!-- Gamification Section -->
+        <div class="gamification-section">
+            <h3>Achievements</h3>
+            <div id="badges">
+                <!-- Dynamic Badges -->
+            </div>
+        </div>
+         <!-- Achieve Next Button -->
+    <div class="centered">
+        <button class="btn" onclick="navigateToGoals()">Achieve Next</button>
+    </div>
+</div>
+    </div>
+   <!-- Goals Page -->
+<div id="goalsPage" class="container hidden">
+    <h2>Select Your Goal</h2>
+    <label for="goal">What is your main goal?</label>
+    <select id="goal" required>
+        <option value="">Select a goal</option>
+        <option value="lose-weight">Lose Weight</option>
+        <option value="gain-weight">Gain Weight</option>
+        <option value="relieve-stress">Relieve Stress</option>
+        <option value="fun-activities">Try Fun Activities</option>
+        <option value="improve-sleep">Improve Sleep</option>
+        <option value="build-muscle">Build Muscle</option>
+        <option value="boost-mental-health">Boost Mental Health</option>
+        <option value="increase-productivity">Increase Productivity</option>
+        <option value="improve-flexibility">Improve Flexibility</option>
+        <option value="develop-new-skill">Develop a New Skill</option>
+        <option value="enhance-endurance">Enhance Endurance</option>
+        <option value="improve-heart-health">Improve Heart Health</option>
+    </select>
+    
+    <div class="centered">
+        <button class="btn" onclick="submitGoal()">Submit</button>
+        <button id="backGoalBtn" class="btn back-button" onclick="goBack('profilePage')">Back to Profile</button>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
